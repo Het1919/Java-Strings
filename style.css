@@ -84,6 +84,7 @@ pre{
     font-size: 15px;
     font-family: cursive;
     background-color: rgb(220, 223, 229);
+    overflow: scroll;
 }
 
 #text-center{
