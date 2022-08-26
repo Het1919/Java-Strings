@@ -43,10 +43,11 @@ nav{
 
 #box{
     float: left;
-    width: 500px;
-    height: 250px;
+    max-width: 500px;
+    max-height: 250px;
     border-radius: 4px;
     margin: 10px;
+
 }
 
 #box2{
