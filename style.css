@@ -43,7 +43,7 @@ nav{
 
 #box{
     float: left;
-    max-width: 500px;
+    max-width: max-content;
     max-height: 250px;
     border-radius: 4px;
     margin: 10px;
