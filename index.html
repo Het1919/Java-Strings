@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff&family=Lobster&family=Permanent+Marker&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap"
+      rel="stylesheet"
+    />
+    <script src="prism.js"></script>
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Strings</title>
+  </head>
+  <body>
+    <nav>
+      <span class="logo"><img src="copy.png" alt="Image" /></span>
+      <div class="content center">Strings in Java</div>
+    </nav>
+    
+    <h1>Strings</h1>
+    <br>
+    <p>Strings in java are treated as Object and as we all know for the object memory is allocated inside Heap Area. anything in double quotes are considered as a string. In string we don't have a null terminator in Java.</p>
+    <br>
+    <h3>Types of String</h3>
+    <ul>
+      <li> I]  Immutable Strings</li>
+      <li> II]  Mutable Strings</li>
+    </ul>
+    <br/>
+    <h4>*  1] Immutable String</h4>
+    <p>=> It can't be changed once it created.</p>
+    <p>=> For working with immutable strings we have a inbuilt class called String.</p>
+    <br>
+    <hr>
+    <h3>Different ways to creating  a String :- </h3>
+
+    <div class="container">
+      <ol>
+        <li>
+            <pre class="language-java"><code>String str="Alien";</code></pre>
+            </li>
+        <li>
+            <pre class="language-java"><code>String str=new String("Alien");</code></pre>
+        </li>
+        <li>
+            <pre class="language-java"><code>char[] c={'A','l','i','e','n'};
+String str=new String(c);</code></pre>
+       </li>
+      </ol>
+    </div>
+    <hr>
+    <p><b>Let's discuss the different types of creating Strings with respect to Memory area.</b></p>
+    <br>
+    <img id="box" src="memory1.png" alt="">
+    <br>
+    <br>
+    <br>
+    <p>=> Inside Heap there are two sections when we declare any string. The first one which is Actual Heap Area and the second one is String Constant Pool(SCP).
+    In SCP duplicates are not permitted and In the Actual Heap Area duplicates are allowed. When you create a string using new keyword then the actual memory will given inside the actual heap area and one copy of that is present inside SCP But when you create a string without using new keyword then memory is allocated inside the SCP only.
+    </p>
+    <br>
+    <img id="box2" src="exmaplestring1.png" alt="">
+    <br>
+    <hr>
+    <h3># Different Ways to Compare String</h3>
+    <p>=> There are 4 methods to <b>compare </b>two strings in Java.</p>
+    <br>
+    <p>1] (==)  => double equals compares reference variable.</p>
+    <p>2] equals()  => equals method compare value of string.</p>
+    <p>3] equalsIgnoreCase()  => string will be compared by Ignoring case sensitivity.</p>
+    <p>4] ComapreTo()  => CompareTo method compare values of string lexiographically(character by character).</p>
+    <br>
+    <img id="box2" src="equal.png" alt="">
+    <hr>
+    <br>
+    <h4>*  2] Mutable String</h4>
+    <p>=> It can be changed once it created.</p>
+    <p>=> For working with Mutable strings we have a inbuilt class called StringBuffer and StringBuilder.</p>
+    <br>
+    <hr>
+    <h3>Two ways to creating a Mutable String :- </h3>
+
+    <div class="container">
+      <ol>
+        <li>
+            <pre class="language-java"><code>StringBuffer sb=new StringBuffer("Sachin");
+StringBuilder sb1=new StringBuilder("Virat");
+            </code></pre>
+        </li>
+      </ol>
+    </div>
+
+      <pre>
+  Case1:
+    String s=new String("sachin");  // 2 object (SCP and other one in heapArea)
+    s.concat("tendulkar"); // 1 object(SCP)
+    System.out.println(s); 
+    Since String object are immutable, if we try to change the object, that change would not happen in the same memory. the changes will happen in the new memory 
+    this concept we call it as "Immutable".
+                                         *****VS*****
+    StringBuffer sb=new StringBuffer("sachin"); // 2 objects( SCP and Other one in heapArea)
+    sb.append("tendulkar"); // 1 object(SCP)
+    System.out.println(sb);
+Since StringBuffer is mutable, if we try to change the object, that change would happen in the same memory, this mechanism is called "mutable".
+
+  Case2:
+    String s1=new String("sachin");// 2 objects(SCP and Other one in heapArea)
+    String s2=new String("sachin");// 1 Object (heapArea)
+    System.out.println( s1.equals(s2) ); // equals method is implemented to check the content of String
+                                        ***vs***
+    StringBuffer sb1=new StringBuffer("sachin");
+    StringBuffer sb2=new StringBuffer("sachin");
+    System.out.println(sb1.equals(sb2); //equals method is not available in StringBuffer class,it is a part of Object class so the implementation is coming from Object class  
+    which compares the reference(address) not the data.
+
+*** Code ***
+====
+    StringBuffer sb1= new StringBuffer("sachin");
+    StringBuffer sb2= new StringBuffer("sachin");
+    System.out.println(sb1==sb2);//compares the refernce so => false
+    System.out.println(sb1.equals(sb2));//false
+
+    System.out.println("*****************************************************");
+    String s1=new String("sachin");
+    String s2=new String("sachin");
+    System.out.println(s1==s2);//false
+    System.out.println(s1.equals(s2));//true
+
+
+
+                           Difference b/w StringBuilder and StringBuffer
+                           =============================================
+         StringBuffer => 1.0 V(1996)                              StringBuilder => 1.5 V
+         All the methods present are synchronized                 All the methods present are not 
+         At a time on StringBuffer object only one                synchronixed.
+         thread can operate                                       At a time on StringBuilder object many threads
+         Since only one thread operate it is                      can operate.
+         "ThreadSafety".                                          so it is not "ThreadSafety".
+         Performance is low.                                      Performance is high.
+
+  </pre>
+  <hr>
+  <p>Here the memory area for Mutable Strings examples.</p>
+  <img src="mutable.png" alt="" id="box2">
+  
+  <hr>
+  
+  <h1 id="text-center">Thanks for reading!!...</h1>
+  </body>
+</html>
+
